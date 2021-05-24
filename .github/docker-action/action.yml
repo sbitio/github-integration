@@ -1,0 +1,29 @@
+name: 'run Jenkins jobs'
+description: 'Runs a Jenkins job depending on the pushed branch'
+inputs:
+  JENKINS_USER:
+    description: 'Username of the Jenkins user to run the jobs'
+    required: true
+  JENKINS_TOKEN:
+    description: 'Jenkins token required for authentication'
+    required: true
+  JENKINS_JOB:
+    description: 'Route of the job TBE in Jenkins'
+    required: true
+  JENKINS_HOST:
+    description: 'The destination of the Jenkins that will run the deploy_ENV jobs'
+    required: true
+#  JENKINS_JOB_PATH:
+#    description: 'Job path'
+#    required: true
+outputs:
+  JOB_STATUS: # id of output
+    description: 'The status of the executed Jenkins job'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.JENKINS_HOST }}
+    - ${{ inputs.JENKINS_JOB }}
+    - ${{ inputs.JENKINS_USER }}
+    - ${{ inputs.JENKINS_TOKEN }}
