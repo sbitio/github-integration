@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sh -c "echo $*"
+
 if [ "${TRACE}" == "true" ]; then
   set -x
 fi
