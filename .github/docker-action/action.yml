@@ -23,7 +23,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.JENKINS_HOST }}
-    - ${{ inputs.JENKINS_JOB }}
+    - -h ${{ inputs.JENKINS_HOST }}
+    - -j ${{ inputs.JENKINS_JOB }}
     - ${{ inputs.JENKINS_USER }}
     - ${{ inputs.JENKINS_TOKEN }}
