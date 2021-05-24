@@ -28,8 +28,8 @@ jobs:
         with:
           JENKINS_HOST: "https://jenkins.sbit.io/"
           JENKINS_JOB: "/admin/dev/sbitio-github/deploy-ENV/deploy-DEVEL"
-          user: ${{ secrets.JENKINS_USER }}
-          jenkins-token: ${{ secrets.JENKINS_TOKEN }}
+          JENKINS_USER: ${{ secrets.JENKINS_USER }}
+          JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
       -
         name: Trigger Jenkins Job deploy-STG
         if: github.ref == 'refs/heads/production'
@@ -37,8 +37,8 @@ jobs:
         with:
           JENKINS_HOST: "https://jenkins.sbit.io/"
           JENKINS_JOB: "/admin/dev/sbitio-github/deploy-ENV/deploy-DEVEL"
-          user: ${{ secrets.JENKINS_USER }}
-          jenkins-token: ${{ secrets.JENKINS_TOKEN }}
+          JENKINS_USER: ${{ secrets.JENKINS_USER }}
+          JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
 #  PROD_deploy:
 #    runs-on: test-runner
 #    environment: https://jenkins.sbit.io/
