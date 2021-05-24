@@ -25,5 +25,5 @@ runs:
   args:
     - -h ${{ inputs.JENKINS_HOST }}
     - -j ${{ inputs.JENKINS_JOB }}
-    - ${{ inputs.JENKINS_USER }}
-    - ${{ inputs.JENKINS_TOKEN }}
+    - -e ${{ inputs.JENKINS_USER }}
+    - -e ${{ inputs.JENKINS_TOKEN }}
