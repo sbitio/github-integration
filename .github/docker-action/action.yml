@@ -22,9 +22,6 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  env:
-    JENKINS_USER: ${{ inputs.JENKINS_USER }}
-    JENKINS_TOKEN: ${{ inputs.JENKINS_TOKEN }}
   args:
     - -h ${{ inputs.JENKINS_HOST }}
     - -j ${{ inputs.JENKINS_JOB }}

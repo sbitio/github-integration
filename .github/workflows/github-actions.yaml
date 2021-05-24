@@ -25,20 +25,22 @@ jobs:
         name: Trigger Jenkins Job deploy-DEV
         if: github.ref == 'refs/heads/dev'
         uses: ./.github/docker-action
-        with:
-          JENKINS_HOST: "https://jenkins.sbit.io/"
-          JENKINS_JOB: "/admin/dev/sbitio-github/deploy-ENV/deploy-DEVEL"
+        env:
           JENKINS_USER: ${{ secrets.JENKINS_USER }}
           JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
+        with:
+          JENKINS_HOST: "https://jenkins.sbit.io/"
+          JENKINS_JOB: "admin/dev/sbitio-github/deploy-ENV/deploy-devel"
       -
         name: Trigger Jenkins Job deploy-STG
         if: github.ref == 'refs/heads/production'
         uses: ./.github/docker-action
-        with:
-          JENKINS_HOST: "https://jenkins.sbit.io/"
-          JENKINS_JOB: "/admin/dev/sbitio-github/deploy-ENV/deploy-DEVEL"
+        env:
           JENKINS_USER: ${{ secrets.JENKINS_USER }}
           JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
+        with:
+          JENKINS_HOST: "https://jenkins.sbit.io/"
+          JENKINS_JOB: "admin/dev/sbitio-github/deploy-ENV/deploy-devel"
 #  PROD_deploy:
 #    runs-on: test-runner
 #    environment: https://jenkins.sbit.io/
