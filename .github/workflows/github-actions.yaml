@@ -24,7 +24,7 @@ jobs:
       -
         name: Trigger Jenkins Job deploy-DEV
         if: github.ref == 'refs/heads/dev'
-        uses: ./.github/docker-action/action.yml
+        uses: ./.github/docker-action
         with:
           JENKINS_HOST: "https://jenkins.sbit.io/"
           JENKINS_JOB: "/admin/dev/sbitio-github/deploy-ENV/deploy-DEVEL"
@@ -33,7 +33,7 @@ jobs:
       -
         name: Trigger Jenkins Job deploy-STG
         if: github.ref == 'refs/heads/production'
-        uses: ./.github/docker-action/action.yml
+        uses: ./.github/docker-action
         with:
           JENKINS_HOST: "https://jenkins.sbit.io/"
           JENKINS_JOB: "/admin/dev/sbitio-github/deploy-ENV/deploy-DEVEL"
