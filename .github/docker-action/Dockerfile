@@ -14,10 +14,8 @@ RUN apt-get update -qq \
  && rm -rf /var/lib/apt/lists/* \
  && apt-get clean -yqq
 
-USER nobody
-
-WORKDIR /app
-
 COPY jenkins_remote_trigger.sh /usr/bin/
+
+RUN chmod +x /usr/bin/jenkins_remote_trigger.sh
 
 ENTRYPOINT [ "/usr/bin/jenkins_remote_trigger.sh" ]
