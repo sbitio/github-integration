@@ -16,4 +16,6 @@ RUN apt-get update -qq \
 
 COPY jenkins_remote_trigger.sh /usr/bin/
 
+RUN chmod +x /usr/bin/jenkins_remote_trigger.sh
+
 ENTRYPOINT [ "/usr/bin/jenkins_remote_trigger.sh" ]
