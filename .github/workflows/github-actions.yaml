@@ -34,4 +34,4 @@ jobs:
           JENKINS_USER: ${{ secrets.JENKINS_USER }}
           JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
         with:
-          args: "-h https://jenkins.sbit.io/ -j admin/dev/sbitio-github/deploy-ENV/deploy-devel"
+          args: "-h https://jenkins.sbit.io/ -j admin/dev/sbitio-github/deploy-ENV/deploy-staging"
