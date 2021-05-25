@@ -9,10 +9,6 @@ on:
       - dev
       ## Execute deploy-stg
       - production
-  pull_request:
-    branches:
-      ## Execute prod-deploy ??
-      - production
 
 jobs:
   deploy_DEVEL:
@@ -24,31 +20,18 @@ jobs:
       -
         name: Trigger Jenkins Job deploy-DEV
         if: github.ref == 'refs/heads/dev'
-        uses: ./.github/docker-action
+        uses: docker://registry.gitlab.com/sbitio/gitlab-ci:latest
         env:
           JENKINS_USER: ${{ secrets.JENKINS_USER }}
           JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
         with:
-          JENKINS_HOST: "https://jenkins.sbit.io/"
-          JENKINS_JOB: "admin/dev/sbitio-github/deploy-ENV/deploy-devel"
+          args: "-h https://jenkins.sbit.io/ -j admin/dev/sbitio-github/deploy-ENV/deploy-devel"
       -
         name: Trigger Jenkins Job deploy-STG
         if: github.ref == 'refs/heads/production'
-        uses: ./.github/docker-action
+        uses: docker://registry.gitlab.com/sbitio/gitlab-ci:latest
         env:
           JENKINS_USER: ${{ secrets.JENKINS_USER }}
           JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
         with:
-          JENKINS_HOST: "https://jenkins.sbit.io/"
-          JENKINS_JOB: "admin/dev/sbitio-github/deploy-ENV/deploy-devel"
-#  PROD_deploy:
-#    runs-on: test-runner
-#    environment: https://jenkins.sbit.io/
-#    steps:
-#      - name: Trigger Jenkins Job
-#        uses: GoldenspearLLC/build-jenkins-job@1.0.0
-#        with:
-#          jenkins-url: "https://jenkins.sbit.io/"
-#          jenkins-token: ${{ secrets.JENKINS_TOKEN }}
-#          user: ${{ secrets.JENKINS_USER }}
-#          job-path: "/job/admin/job/dev/job/sbitio-github/job/deploy-ENV/job/prod-deploy/"
+          args: "-h https://jenkins.sbit.io/ -j admin/dev/sbitio-github/deploy-ENV/deploy-devel"
